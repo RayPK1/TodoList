@@ -54,3 +54,19 @@ code {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+
+.trash-icon {
+  display: none; /* Ẩn biểu tượng mặc định */
+  opacity: 0; /* Đặt độ mờ về 0 */
+  transition: opacity 1s ease; /* Thêm hiệu ứng chuyển tiếp */
+}
+
+.button-styled:hover .trash-icon {
+  display: inline-block; /* Hiển thị khi hover */
+  opacity: 1; /* Đặt độ mờ về 1 khi hover */
+}
+
+.button-styled .trash-icon {
+  display: block; /* Giữ biểu tượng hiển thị */
+}
+

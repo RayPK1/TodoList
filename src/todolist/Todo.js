@@ -1,17 +1,29 @@
-import Button from '@atlaskit/button/new'
-import React from 'react'
-import '../index.css'
+import Button from '@atlaskit/button/new';
+import Trash from '@atlaskit/icon/glyph/trash';
+import '../index.css';
+import React from 'react';
 
-const ButtonStyled = ({value})=>
-{
-    return <div className="button-styled">
-    <Button shouldFitContainer className="button-styled">{value}</Button>
-    <br></br>
-    </div>
-}
+const TrashIcon = ({value,onTrashBtnClick}) => (
+    <span className='trash-icon' onClick={() => onTrashBtnClick(value.Id)}>
+        <Trash />
+    </span>
+);
 
-export default function Todo({todo}) {
-  return (
-    <ButtonStyled value={todo.name}></ButtonStyled>
-  )
+const ButtonStyled = ({ value, onTrashBtnClick }) => {
+    const style = { textDecoration: value.isDeleted ? 'line-through' : 'none' };
+    return (
+        <div className="button-styled" style={style}  >
+            <Button
+                shouldFitContainer
+                iconAfter={() => <TrashIcon value = {value} onTrashBtnClick={onTrashBtnClick} />}     
+            >
+                {value.name}
+            </Button>
+            <br />
+        </div>
+    );
+};
+
+export default function Todo({ todo, onTrashBtnClick }) {
+    return <ButtonStyled value={todo} onTrashBtnClick={onTrashBtnClick} />;
 }
